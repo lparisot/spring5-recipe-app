@@ -13,7 +13,7 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    @ManyToMany
+    @ManyToOne
     private Recipe recipe;
 
     // retrieve every time from the database

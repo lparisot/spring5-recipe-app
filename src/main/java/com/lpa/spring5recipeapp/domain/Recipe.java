@@ -17,11 +17,16 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //private Difficulty difficulty;
 
     // large object storage
     @Lob
     private Byte[] image;
+
+    // EnumType.STRING means the value saved in database is a string based on the enum name
+    // EnumType.ORDINAL means the value saved in database is a number
+    // if you change the enum, values in DB will not change
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     // target property on Ingredient is recipe
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
@@ -120,5 +125,13 @@ public class Recipe {
 
     public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }

@@ -127,6 +127,7 @@ public class Recipe {
     }
 
     public void setNotes(Notes notes) {
+        // bidirectional relationship
         this.notes = notes;
         notes.setRecipe(this);
     }
@@ -156,6 +157,7 @@ public class Recipe {
     }
 
     public Recipe addIngredient(Ingredient ingredient) {
+        // bidirectional relationship
         ingredient.setRecipe(this);
         this.ingredients.add(ingredient);
         return this;

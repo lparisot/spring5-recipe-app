@@ -1,8 +1,14 @@
 package com.lpa.spring5recipeapp.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
+// circular reference because of the bi-directional relationship
+@EqualsAndHashCode(exclude = "recipes")
 @Entity
 public class Category {
 
@@ -16,29 +22,4 @@ public class Category {
     // remove duplicated tables CATEGORY_RECIPES and RECIPE_CATEGORIES
     private Set<Recipe> recipes;
 
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
-    }
 }

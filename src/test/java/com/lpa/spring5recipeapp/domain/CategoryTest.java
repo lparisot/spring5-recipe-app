@@ -9,7 +9,7 @@ public class CategoryTest {
     Category category;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         category = new Category();
     }
 

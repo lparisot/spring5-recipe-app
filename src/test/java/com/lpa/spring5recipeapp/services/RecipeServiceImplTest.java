@@ -15,10 +15,10 @@ import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
 
-    RecipeService recipeService;
+    private RecipeService recipeService;
 
     @Mock
-    RecipeRepository recipeRepository;
+    private RecipeRepository recipeRepository;
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +31,7 @@ public class RecipeServiceImplTest {
     @Test
     public void getRecipes() throws Exception {
         Recipe recipe = new Recipe();
-        HashSet recipesData = new HashSet();
+        Set<Recipe> recipesData = new HashSet<>();
         recipesData.add(recipe);
 
         when(recipeService.getRecipes()).thenReturn(recipesData);

@@ -56,7 +56,9 @@ public class Recipe {
     public void setNotes(Notes notes) {
         // bidirectional relationship
         this.notes = notes;
-        notes.setRecipe(this);
+        if(notes != null) {
+            notes.setRecipe(this);
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient) {

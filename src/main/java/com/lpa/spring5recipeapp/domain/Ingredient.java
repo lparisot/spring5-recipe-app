@@ -23,7 +23,7 @@ public class Ingredient {
 
     // retrieve every time from the database
     @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMeasure uom;
+    private UnitOfMeasure unitOfMeasure;
 
 
     public Ingredient() {
@@ -32,14 +32,14 @@ public class Ingredient {
     public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
         this.description = description;
         this.amount = amount;
-        this.uom = uom;
+        this.unitOfMeasure = uom;
     }
 
     public Ingredient(String description, BigDecimal amount, Recipe recipe, UnitOfMeasure uom) {
         this.description = description;
         this.amount = amount;
         this.recipe = recipe;
-        this.uom = uom;
+        this.unitOfMeasure = uom;
     }
 
 }

@@ -58,4 +58,9 @@ public class RecipeServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
     }
+
+    @Test(expected = RuntimeException.class)
+    public void getRecipeByIdWrong() throws Exception {
+        Recipe recipeReturned = recipeService.findById(1L);
+    }
 }

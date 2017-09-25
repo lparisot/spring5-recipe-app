@@ -1,5 +1,8 @@
 package com.lpa.spring5recipeapp.services;
 
+import com.lpa.spring5recipeapp.commands.RecipeCommand;
+import com.lpa.spring5recipeapp.converters.RecipeCommandToRecipe;
+import com.lpa.spring5recipeapp.converters.RecipeToRecipeCommand;
 import com.lpa.spring5recipeapp.domain.Recipe;
 import com.lpa.spring5recipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +18,14 @@ public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    private final RecipeCommandToRecipe recipeCommandToRecipe;
+
+    private final RecipeToRecipeCommand recipeToRecipeCommand;
+
+    public RecipeServiceImpl(RecipeRepository recipeRepository, RecipeCommandToRecipe recipeCommandToRecipe, RecipeToRecipeCommand recipeToRecipeCommand) {
         this.recipeRepository = recipeRepository;
+        this.recipeCommandToRecipe = recipeCommandToRecipe;
+        this.recipeToRecipeCommand = recipeToRecipeCommand;
     }
 
     @Override
@@ -39,5 +48,10 @@ public class RecipeServiceImpl implements RecipeService {
         }
 
         return recipeOptional.get();
+    }
+
+    @Override
+    public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+        return null;
     }
 }

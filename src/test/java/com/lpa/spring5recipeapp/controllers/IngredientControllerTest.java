@@ -1,6 +1,8 @@
 package com.lpa.spring5recipeapp.controllers;
 
+import com.lpa.spring5recipeapp.commands.IngredientCommand;
 import com.lpa.spring5recipeapp.commands.RecipeCommand;
+import com.lpa.spring5recipeapp.services.IngredientService;
 import com.lpa.spring5recipeapp.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IngredientControllerTest {
     @Mock
     private RecipeService recipeService;
+
+    @Mock
+    private IngredientService ingredientService;
 
     private IngredientController controller;
 
@@ -47,4 +52,19 @@ public class IngredientControllerTest {
         verify(recipeService, times(1)).findCommandById(anyLong());
     }
 
+    @Test
+    public void testShowIngredient() throws Exception {
+        //given
+        IngredientCommand ingredientCommand = new IngredientCommand();
+
+        //when
+        when(ingredientService.findByRecipeIdAndIngredientId(anyLong(), anyLong())).thenReturn(ingredientCommand);
+
+        //then
+        mockMvc.perform(
+                get("/recipe/1/ingredient/2/show"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("recipe/ingredient/show"))
+                    .andExpect(model().attributeExists("ingredient"));
+    }
 }

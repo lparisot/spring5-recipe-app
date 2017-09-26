@@ -20,5 +20,4 @@ public class Notes {
 
     @OneToOne
     private Recipe recipe;
-
 }

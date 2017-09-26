@@ -21,11 +21,18 @@
     <!--/*@thymesVar id="ingredients" type="java.util.Set<com.lpa.spring5recipeapp.commands.IngredientCommand>"*/-->
     <div class="container-fluid" style="margin-top: 20px">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-primary">
 
                     <div class="panel-heading">
-                        <h1 class="panel-title">Ingredients</h1>
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">Ingredients</h1>
+                            </div>
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">New</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
 

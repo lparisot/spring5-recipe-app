@@ -18,11 +18,10 @@
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="com.lpa.spring5recipeapp.domain.Recipe"*/-->
-<!--/*@thymesVar id="difficulties" type="com.lpa.spring5recipeapp.domain.Difficulty"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <form th:object="${recipe}" th:action="@{/recipe/}">
+            <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
@@ -66,18 +65,18 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control">
+                                    <select class="form-control" th:field="*{difficulty}">
+                                        <!--/*@thymesVar id="difficultyValue" type="com.lpa.spring5recipeapp.domain.Difficulty"*/-->
+                                        <option th:each="difficultyValue : ${T(com.lpa.spring5recipeapp.domain.Difficulty).values()}"
+                                                th:value="${difficultyValue.name()}"
+                                                th:text="${difficultyValue.name()}"
+                                        >val</option>
+                                    </select>
+                                    <select class="form-control" th:remove="all">
                                         <option>Easy</option>
                                         <option>Medium</option>
                                         <option>Hard</option>
                                     </select>
-                                    <!--<select class="form-control" th:field="*{difficulty}">
-                                        <option th:each="difficulty : ${difficulties.getValues()}"
-                                                th:value="${difficulty.getValue()}"
-                                                th:text="${difficulty.getText()}">
-                                            Each
-                                        </option>
-                                    </select>-->
                                 </div>
                             </div>
                             <div class="row">

@@ -2,6 +2,7 @@ package com.lpa.spring5recipeapp.controllers;
 
 import com.lpa.spring5recipeapp.services.IngredientService;
 import com.lpa.spring5recipeapp.services.RecipeService;
+import com.lpa.spring5recipeapp.services.UnitOfMeasureService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IngredientController {
     private final RecipeService recipeService;
     private final IngredientService ingredientService;
+    private final UnitOfMeasureService unitOfMeasureService;
 
-    public IngredientController(RecipeService recipeService, IngredientService ingredientService) {
+    public IngredientController(RecipeService recipeService, IngredientService ingredientService, UnitOfMeasureService unitOfMeasureService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
+        this.unitOfMeasureService = unitOfMeasureService;
     }
 
     @GetMapping

@@ -20,14 +20,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class ImageControllerTest {
     @Mock
-    ImageService imageService;
+    private ImageService imageService;
 
     @Mock
-    RecipeService recipeService;
+    private RecipeService recipeService;
 
-    ImageController controller;
+    private ImageController controller;
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {

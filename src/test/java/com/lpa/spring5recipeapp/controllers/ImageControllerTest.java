@@ -91,12 +91,13 @@ public class ImageControllerTest {
         when(recipeService.findCommandById(anyLong())).thenReturn(command);
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(get("/recipe/1/recipeimage"))
-                .andExpect(status().isOk())
-                .andReturn().getResponse();
+        MockHttpServletResponse response = mockMvc.perform(
+                get("/recipe/1/recipeimage"))
+                    .andExpect(status().isOk())
+                    .andReturn().getResponse();
 
-        byte[] reponseBytes = response.getContentAsByteArray();
+        byte[] responseBytes = response.getContentAsByteArray();
 
-        assertEquals(s.getBytes().length, reponseBytes.length);
+        assertEquals(s.getBytes().length, responseBytes.length);
     }
 }

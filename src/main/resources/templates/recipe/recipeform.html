@@ -25,14 +25,14 @@
                 <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
 
                     <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-                        <p>Please Correct Errors Below</p>
+                        <p th:text="#{recipe.error}">Please Correct Errors Below</p>
                     </div>
 
                     <input type="hidden" th:field="*{id}"/>
                     <div class="pannel-group">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h1 class="panel-title">Edit Recipe Information</h1>
+                                <h1 class="panel-title" th:text="#{recipe.title.edit}">Edit Recipe Information</h1>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
